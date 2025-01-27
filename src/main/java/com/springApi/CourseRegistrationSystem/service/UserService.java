@@ -12,10 +12,11 @@ public class UserService {
     UserRepo repo;
 
    private BCryptPasswordEncoder encoder=new BCryptPasswordEncoder(12);
-   public void addUser(User user){
+   public User addUser(User user){
        user.setPassword(encoder.encode(user.getPassword()));
        System.out.println((String)user.getPassword());
        System.out.println((String)user.getName());
        repo.save(user);
+       return user;
    }
 }
